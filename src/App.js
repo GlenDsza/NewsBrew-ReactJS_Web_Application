@@ -4,12 +4,17 @@ import Navbar from "./components/Navbar";
 import LoadingBar from "react-top-loading-bar";
 import News from "./components/News";
 import Footer from "./components/Footer";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 
 const App = () => {
   const apiKey = process.env.REACT_APP_NEWS_API;
   const [progress, setProgress] = useState(0);
-
+  let incKey = 1;
   return (
     <div>
       <Router>
@@ -21,6 +26,7 @@ const App = () => {
             path="/"
             element={
               <News
+                search={false} 
                 setProgress={setProgress}
                 apiKey={apiKey}
                 key="general"
@@ -35,6 +41,7 @@ const App = () => {
             path="/business"
             element={
               <News
+                search={false} 
                 setProgress={setProgress}
                 apiKey={apiKey}
                 key="business"
@@ -49,6 +56,7 @@ const App = () => {
             path="/entertainment"
             element={
               <News
+                search={false} 
                 setProgress={setProgress}
                 apiKey={apiKey}
                 key="entertainment"
@@ -63,6 +71,7 @@ const App = () => {
             path="/health"
             element={
               <News
+                search={false} 
                 setProgress={setProgress}
                 apiKey={apiKey}
                 key="health"
@@ -77,6 +86,7 @@ const App = () => {
             path="/science"
             element={
               <News
+                search={false} 
                 setProgress={setProgress}
                 apiKey={apiKey}
                 key="science"
@@ -91,6 +101,7 @@ const App = () => {
             path="/sports"
             element={
               <News
+                search={false} 
                 setProgress={setProgress}
                 apiKey={apiKey}
                 key="sports"
@@ -105,12 +116,28 @@ const App = () => {
             path="/technology"
             element={
               <News
+                search={false} 
                 setProgress={setProgress}
                 apiKey={apiKey}
                 key="technology"
                 pageSize={9}
                 country="in"
                 category="technology"
+              />
+            }
+          />
+          <Route
+            exact
+            path="/search"
+            element={
+              <News
+                search={true}
+                setProgress={setProgress}
+                apiKey={apiKey}
+                key={incKey++}
+                pageSize={9}
+                country="in"
+                category="general"
               />
             }
           />

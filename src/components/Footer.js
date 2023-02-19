@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="">
           <a className="d-flex justify-content-center" style={{color: 'black'}} href="https://github.com/GlenDsza">
           <p style={{fontSize: '.8rem', marginBottom: '.5rem'}}>Developed with ❤️ by Glen Dsouza</p>
-          <i class="fa-brands fa-github mx-2" style={{textDecoration: 'none'}}></i>
+          <i className="fa-brands fa-github mx-2" style={{textDecoration: 'none'}}></i>
           </a>
         </div>    
       </footer>
