@@ -54,13 +54,12 @@ const News = (props) => {
   };
 
   return (
-    <>
+    <div style={{minHeight: '500px'}}>
       <h1 className="text-center mb-3" style={{marginTop: '85px'}}>
         {props.category === "general"
           ? "NewsBrew | Top Headlines"
           : `Top Headlines |  ${capitalizeFirstLetter(props.category)}`}
       </h1>
-      {loading && <Spinner />}
       <InfiniteScroll
         dataLength={articles.length}
         next={fetchMoreData}
@@ -84,22 +83,22 @@ const News = (props) => {
                   <NewsItem
                     title={
                       title
-                        ? title.length > 62
-                          ? title.slice(0, 62) + "..."
+                        ? title.length > 55
+                          ? title.slice(0, 55) + "..."
                           : title
                         : "..."
                     }
                     description={
                       description
-                        ? description.length > 120
-                          ? description.slice(0, 120) + "..."
+                        ? description.length > 105
+                          ? description.slice(0, 105) + "..."
                           : description
                         : "..."
                     }
                     imageUrl={
-                      urlToImage
-                        ? urlToImage
-                        : "https://www.euractiv.com/wp-content/uploads/sites/2/2014/03/news-default.jpeg"
+                      (urlToImage === null || urlToImage === "")
+                        ? "https://www.euractiv.com/wp-content/uploads/sites/2/2014/03/news-default.jpeg"
+                        : urlToImage
                     }
                     newsUrl={url}
                     author={author}
@@ -112,7 +111,7 @@ const News = (props) => {
           </div>
         </div>
       </InfiniteScroll>
-    </>
+    </div>
   );
 };
 
