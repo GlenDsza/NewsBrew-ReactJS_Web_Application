@@ -1,19 +1,14 @@
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = (props) => {
 
-  const [search, setSearch] = useState(null);
   const navigate = useNavigate();
-
-  const handleOnChange = (event) => {
-    setSearch(event.target.value);
-  }
+  const queryRef = useRef();
 
   const handleSearchClick = () => {  
-    console.log("Hola "+search)  
-    if(search.trim())
-      navigate(`/search/:`,{state: {search: search}});
+    if(queryRef.current.value)
+      navigate(`/search/${queryRef.current.value}`);
   }
 
   const handleNavItemClick = event => {
@@ -48,7 +43,7 @@ const Navbar = (props) => {
               type="search"
               placeholder="Search News..."
               aria-label="Search"
-              onChange={handleOnChange}
+              ref={queryRef}
             />
             <button className="btn btn-outline-primary" type="submit" onClick={handleSearchClick}>
               <i className="fa-solid fa-magnifying-glass"></i>

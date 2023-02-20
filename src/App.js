@@ -4,17 +4,12 @@ import Navbar from "./components/Navbar";
 import LoadingBar from "react-top-loading-bar";
 import News from "./components/News";
 import Footer from "./components/Footer";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useLocation,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useParams } from "react-router-dom";
 
 const App = () => {
   const apiKey = process.env.REACT_APP_NEWS_API;
   const [progress, setProgress] = useState(0);
-  let incKey = 1;
+  
   return (
     <div>
       <Router>
@@ -126,18 +121,19 @@ const App = () => {
               />
             }
           />
+         
           <Route
             exact
-            path="/search"
+            path="/search/:query"
             element={
               <News
                 search={true}
                 setProgress={setProgress}
                 apiKey={apiKey}
-                key={incKey++}
+                key='search'
                 pageSize={9}
                 country="in"
-                category="general"
+                category="search"
               />
             }
           />
