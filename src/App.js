@@ -9,11 +9,16 @@ import { BrowserRouter as Router, Routes, Route, useParams } from "react-router-
 const App = () => {
   const apiKey = process.env.REACT_APP_NEWS_API;
   const [progress, setProgress] = useState(0);
+  const [query, setQuery] = useState('query');
+
+  const chooseKey = (key) => {
+    setQuery(key)
+  };
   
   return (
     <div>
       <Router>
-        <Navbar title="NewsBrew" />
+        <Navbar title="NewsBrew" chooseKey={chooseKey} />
         <LoadingBar height={3} color="#1D2BD1" progress={progress} />
         <Routes>
           <Route
@@ -130,7 +135,7 @@ const App = () => {
                 search={true}
                 setProgress={setProgress}
                 apiKey={apiKey}
-                key='search'
+                key={query}
                 pageSize={9}
                 country="in"
                 category="search"

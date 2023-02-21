@@ -7,8 +7,10 @@ const Navbar = (props) => {
   const queryRef = useRef();
 
   const handleSearchClick = () => {  
-    if(queryRef.current.value)
+    if(queryRef.current.value){
       navigate(`/search/${queryRef.current.value}`);
+      props.chooseKey(queryRef.current.value);
+    }
   }
 
   const handleNavItemClick = event => {
