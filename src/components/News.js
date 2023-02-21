@@ -64,7 +64,9 @@ const News = (props) => {
   return (
     <div style={{ minHeight: "500px" }}>
       <h1 className="text-center mb-3" style={{ marginTop: "85px" }}>
-        {props.category === "general"
+        {props.search
+          ? `${query} | ${totalResults} Results`
+          : props.category === "general"
           ? "NewsBrew | Top Headlines"
           : `Top Headlines |  ${capitalizeFirstLetter(props.category)}`}
       </h1>

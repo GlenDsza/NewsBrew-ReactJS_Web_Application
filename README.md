@@ -2,7 +2,22 @@
 
 # NewsBrew: ReactJS Web Application
 
-NewsBrew is a ReactJS based Single Page Web Application which fetches new from NEWS API and presents to the user. This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+NewsBrew is a ReactJS based Single Page Web Application which fetches new from NEWS API and presents to the user. The project is still under-development. This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Snapshots✨
+
+<table>
+    <tr>
+        <td><img src="Images/SS/1.png"></td>
+    </tr>
+     <tr>
+        <td><img src="Images/SS/2.png"></td>
+    </tr>
+     <tr>
+        <td><img src="Images/SS/3.png"></td>
+    </tr>
+</table>
+
 
 ## Available Scripts
 
