@@ -63,3 +63,7 @@ footer{
     border-top-right-radius: 12px;
     border-top-left-radius: 12px;
 }
+
+#modeBtn{
+  border-radius: 50px;
+}

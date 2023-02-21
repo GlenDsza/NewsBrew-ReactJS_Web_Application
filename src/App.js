@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import LoadingBar from "react-top-loading-bar";
 import News from "./components/News";
 import Footer from "./components/Footer";
-import { BrowserRouter as Router, Routes, Route, useParams } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 const App = () => {
   const apiKey = process.env.REACT_APP_NEWS_API;
@@ -78,21 +78,6 @@ const App = () => {
                 pageSize={9}
                 country="in"
                 category="health"
-              />
-            }
-          />
-          <Route
-            exact
-            path="/science"
-            element={
-              <News
-                search={false} 
-                setProgress={setProgress}
-                apiKey={apiKey}
-                key="science"
-                pageSize={9}
-                country="in"
-                category="science"
               />
             }
           />

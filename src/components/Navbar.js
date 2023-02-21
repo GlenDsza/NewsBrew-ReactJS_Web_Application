@@ -1,23 +1,22 @@
-import React, {useRef, useState} from "react";
+import React, { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = (props) => {
-
   const navigate = useNavigate();
   const queryRef = useRef();
 
-  const handleSearchClick = () => {  
-    if(queryRef.current.value){
+  const handleSearchClick = () => {
+    if (queryRef.current.value) {
       navigate(`/search/${queryRef.current.value}`);
       props.chooseKey(queryRef.current.value);
     }
-  }
+  };
 
-  const handleNavItemClick = event => {
-    document.querySelectorAll('.nav-link').forEach((element) => {
-      element.classList.remove('active');
-    })
-    event.currentTarget.classList.toggle('active');
+  const handleNavItemClick = (event) => {
+    document.querySelectorAll(".nav-link").forEach((element) => {
+      element.classList.remove("active");
+    });
+    event.currentTarget.classList.toggle("active");
   };
 
   return (
@@ -35,9 +34,14 @@ const Navbar = (props) => {
             />
             <strong>{props.title}</strong>
           </Link>
+
+          <div id='modeBtn' className={`text-secondary float-end ms-auto p-0 order-sm-1 order-lg-2 ms-lg-3`}>
+            <i className="fa-solid fa-moon p-2"></i>
+          </div>
+
           <div
             id="searchNews"
-            className="d-flex order-1 order-sm-0 order-lg-1 col-lg-3 col-sm-4 col-12 mt-2 mt-md-0"
+            className="d-flex order-1 order-sm-0 order-lg-1 col-lg-3 col-sm-4 col-12 mt-2 mt-md-0 mx-sm-auto"
             role="search"
           >
             <input
@@ -47,12 +51,16 @@ const Navbar = (props) => {
               aria-label="Search"
               ref={queryRef}
             />
-            <button className="btn btn-outline-primary" type="submit" onClick={handleSearchClick}>
+            <button
+              className="btn btn-outline-primary"
+              type="submit"
+              onClick={handleSearchClick}
+            >
               <i className="fa-solid fa-magnifying-glass"></i>
             </button>
           </div>
           <button
-            className="navbar-toggler"
+            className="navbar-toggler order-sm-2"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -75,7 +83,12 @@ const Navbar = (props) => {
                 </Link>
               </li>
               <li className="nav-item position-relative">
-                <Link className="nav-link" aria-current="page" to="/business" onClick={handleNavItemClick}>
+                <Link
+                  className="nav-link"
+                  aria-current="page"
+                  to="/business"
+                  onClick={handleNavItemClick}
+                >
                   Business
                 </Link>
               </li>
@@ -90,22 +103,32 @@ const Navbar = (props) => {
                 </Link>
               </li>
               <li className="nav-item position-relative">
-                <Link className="nav-link" aria-current="page" to="/health" onClick={handleNavItemClick}>
+                <Link
+                  className="nav-link"
+                  aria-current="page"
+                  to="/health"
+                  onClick={handleNavItemClick}
+                >
                   Health
                 </Link>
               </li>
               <li className="nav-item position-relative">
-                <Link className="nav-link" aria-current="page" to="/science" onClick={handleNavItemClick}>
-                  Science
-                </Link>
-              </li>
-              <li className="nav-item position-relative">
-                <Link className="nav-link" aria-current="page" to="/sports" onClick={handleNavItemClick}>
+                <Link
+                  className="nav-link"
+                  aria-current="page"
+                  to="/sports"
+                  onClick={handleNavItemClick}
+                >
                   Sports
                 </Link>
               </li>
               <li className="nav-item position-relative">
-                <Link className="nav-link" aria-current="page" to="/technology" onClick={handleNavItemClick}>
+                <Link
+                  className="nav-link"
+                  aria-current="page"
+                  to="/technology"
+                  onClick={handleNavItemClick}
+                >
                   Technology
                 </Link>
               </li>
