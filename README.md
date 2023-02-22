@@ -8,14 +8,15 @@ NewsBrew is a ReactJS based Single Page Web Application which fetches new from N
 
 <table>
     <tr>
-        <td colspan='2'><img src="Images/SS/1.png"></td>
+        <td colspan='3'><img src="Images/SS/1.png"></td>
     </tr>
      <tr>
-        <td colspan='2'><img src="Images/SS/2.png"></td>
+        <td colspan='3'><img src="Images/SS/2.png"></td>
     </tr>
      <tr>
         <td><img src="Images/SS/3.png"></td>
         <td><img src="Images/SS/4.png"></td>
+        <td><img src="Images/SS/5.png"></td>
     </tr>
 </table>
 
