@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 
 const News = (props) => {
   const [articles, setArticles] = useState([]);
+  // eslint-disable-next-line
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
@@ -63,7 +64,12 @@ const News = (props) => {
 
   return (
     <div style={{ minHeight: "500px" }}>
-      <h1 className="text-center mb-3" style={{ marginTop: "85px" }}>
+      <h1
+        id='newsTitle'
+        className={`${
+          props.mode === "light" ? "text-dark" : "text-light"
+        } text-center mb-3`}
+      >
         {props.search
           ? `${query} | ${totalResults} Results`
           : props.category === "general"
@@ -76,7 +82,7 @@ const News = (props) => {
         hasMore={articles.length !== totalResults}
         loader={<Spinner />}
       >
-        <div className="container">
+        <div className="container" id="newsContainer">
           <div className="row">
             {articles.map((element) => {
               let {
@@ -89,7 +95,7 @@ const News = (props) => {
                 publishedAt,
               } = element;
               return (
-                <div className="col-md-4" key={element.url}>
+                <div className={`col-sm-6 col-md-4`} key={element.url}>
                   <NewsItem
                     title={
                       title
@@ -114,6 +120,7 @@ const News = (props) => {
                     author={author}
                     date={publishedAt}
                     source={source}
+                    mode={props.mode}
                   />
                 </div>
               );

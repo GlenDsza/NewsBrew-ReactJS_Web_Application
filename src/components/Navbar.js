@@ -9,6 +9,10 @@ const Navbar = (props) => {
     if (queryRef.current.value) {
       navigate(`/search/${queryRef.current.value}`);
       props.chooseKey(queryRef.current.value);
+      document.querySelectorAll(".nav-link").forEach((element) => {
+        element.classList.remove("active");
+      });
+      document.getElementById("homeLink").classList.add("active");
     }
   };
 
@@ -22,8 +26,13 @@ const Navbar = (props) => {
   return (
     <div>
       <nav
-        className="navbar navbar-expand-lg fixed-top bg-body-tertiary"
-        style={{ boxShadow: "0 2px 4px 0 rgba(0,0,0,.4)" }}
+        className={`navbar navbar-expand-lg fixed-top navbar-${props.mode} bg-${props.mode}`}
+        style={{
+          boxShadow:
+            props.mode === "dark"
+              ? "0 2px 4px 0 rgba(255,255,255,.4)"
+              : "0 2px 4px 0 rgba(0,0,0,.4)",
+        }}
       >
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
@@ -35,8 +44,17 @@ const Navbar = (props) => {
             <strong>{props.title}</strong>
           </Link>
 
-          <div id='modeBtn' className={`text-secondary float-end ms-auto p-0 order-sm-1 order-lg-2 ms-lg-3`}>
-            <i className="fa-solid fa-moon p-2"></i>
+          <div
+            id="modeBtn"
+            onClick={props.toggleMode}
+            className={`text-secondary float-end ms-auto p-0 order-sm-1 order-lg-2 ms-lg-3`}
+            style={{ pointerEvents: "painted" }}
+          >
+            <i
+              className={`fa-solid ${
+                props.mode === "light" ? "fa-moon" : "fa-sun text-light"
+              } p-2`}
+            ></i>
           </div>
 
           <div
@@ -45,14 +63,21 @@ const Navbar = (props) => {
             role="search"
           >
             <input
-              className="form-control me-2"
+              className={`form-control me-2`}
+              style={{
+                backgroundColor: `${props.mode === "light" ? "" : "#C0C1CB"}`,
+              }}
               type="search"
               placeholder="Search News..."
               aria-label="Search"
               ref={queryRef}
             />
             <button
-              className="btn btn-outline-primary"
+              className={`btn ${
+                props.mode === "light"
+                  ? "btn-outline-primary"
+                  : "btn-outline-light"
+              }`}
               type="submit"
               onClick={handleSearchClick}
             >
@@ -74,6 +99,7 @@ const Navbar = (props) => {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item position-relative">
                 <Link
+                  id="homeLink"
                   className="nav-link active"
                   aria-current="page"
                   onClick={handleNavItemClick}

@@ -4,9 +4,17 @@ const NewsItem = (props) => {
   let { title, description, imageUrl, newsUrl, author, date, source } = props;
   return (
     <div className="my-3">
-      <div className="card overflow-hidden" style={{boxShadow: '0 0.125rem 0.675rem rgb(0 0 0 / 30%)'}}>
+      <div
+        className={`card overflow-hidden`}
+        style={{
+          boxShadow: "0 0.125rem 0.675rem rgb(0 0 0 / 30%)",
+          backgroundColor: `${
+            props.mode === "light" ? "" : "#C0C1CB"
+          }`,
+        }}
+      >
         <img src={imageUrl} className="card-img-top" alt="Failed to load" />
-        <div className="card-body" style={{height : '260px'}}>
+        <div className="card-body" style={{ height: "260px" }}>
           <h5 className="card-title" style={{ textAlign: "justify" }}>
             {title}
           </h5>
@@ -39,7 +47,6 @@ const NewsItem = (props) => {
               rel="noreferrer"
               className="btn btn-sm btn-outline-primary position-absolute"
               style={{ bottom: "10px", left: "12px" }}
-
             >
               Read more...
             </a>

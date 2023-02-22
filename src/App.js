@@ -4,21 +4,37 @@ import Navbar from "./components/Navbar";
 import LoadingBar from "react-top-loading-bar";
 import News from "./components/News";
 import Footer from "./components/Footer";
-import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const App = () => {
   const apiKey = process.env.REACT_APP_NEWS_API;
   const [progress, setProgress] = useState(0);
-  const [query, setQuery] = useState('query');
+  const [mode, setMode] = useState("light");
+  const [query, setQuery] = useState("query");
+
+  const toggleMode = () => {
+    if (mode === "dark") {
+      setMode("light");
+      document.body.style.backgroundColor = "white";
+    } else {
+      setMode("dark");
+      document.body.style.backgroundColor = "#3D3D3D";
+    }
+  };
 
   const chooseKey = (key) => {
-    setQuery(key)
+    setQuery(key);
   };
-  
+
   return (
     <div>
       <Router>
-        <Navbar title="NewsBrew" chooseKey={chooseKey} />
+        <Navbar
+          title="NewsBrew"
+          chooseKey={chooseKey}
+          mode={mode}
+          toggleMode={toggleMode}
+        />
         <LoadingBar height={3} color="#1D2BD1" progress={progress} />
         <Routes>
           <Route
@@ -26,7 +42,8 @@ const App = () => {
             path="/"
             element={
               <News
-                search={false} 
+                mode={mode}
+                search={false}
                 setProgress={setProgress}
                 apiKey={apiKey}
                 key="general"
@@ -41,7 +58,8 @@ const App = () => {
             path="/business"
             element={
               <News
-                search={false} 
+                mode={mode}
+                search={false}
                 setProgress={setProgress}
                 apiKey={apiKey}
                 key="business"
@@ -56,7 +74,8 @@ const App = () => {
             path="/entertainment"
             element={
               <News
-                search={false} 
+                mode={mode}
+                search={false}
                 setProgress={setProgress}
                 apiKey={apiKey}
                 key="entertainment"
@@ -71,7 +90,8 @@ const App = () => {
             path="/health"
             element={
               <News
-                search={false} 
+                mode={mode}
+                search={false}
                 setProgress={setProgress}
                 apiKey={apiKey}
                 key="health"
@@ -86,7 +106,8 @@ const App = () => {
             path="/sports"
             element={
               <News
-                search={false} 
+                mode={mode}
+                search={false}
                 setProgress={setProgress}
                 apiKey={apiKey}
                 key="sports"
@@ -101,7 +122,8 @@ const App = () => {
             path="/technology"
             element={
               <News
-                search={false} 
+                mode={mode}
+                search={false}
                 setProgress={setProgress}
                 apiKey={apiKey}
                 key="technology"
@@ -111,12 +133,13 @@ const App = () => {
               />
             }
           />
-         
+
           <Route
             exact
             path="/search/:query"
             element={
               <News
+                mode={mode}
                 search={true}
                 setProgress={setProgress}
                 apiKey={apiKey}
